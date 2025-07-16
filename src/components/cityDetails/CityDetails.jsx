@@ -1,54 +1,60 @@
-import { useEffect, useState } from "react";
-import { fetchLatLon } from "../../utils/API";
-import { getWeatherIcon } from "../../utils/weatherIcons";
-import { FaRegStar, FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import TemperatureChart from "../temperatureChart/TemperatureChart";
-import { MdOutlineStar } from "react-icons/md";
-import { IoHome } from "react-icons/io5";
-import { useTheme } from "../../context/ThemeContext";
-import "./cityDetails.css";
+import { useEffect, useState } from 'react'
+import { fetchLatLon } from '../../utils/API'
+import { getWeatherIcon } from '../../utils/weatherIcons'
+import { FaRegStar, FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import TemperatureChart from '../temperatureChart/TemperatureChart'
+import { MdOutlineStar } from 'react-icons/md'
+import { IoHome } from 'react-icons/io5'
+import { useTheme } from '../../context/ThemeContext'
+import './cityDetails.css'
 
 function CityDetails({ cityName }) {
-  const [weatherData, setWeatherData] = useState(null);
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [weatherData, setWeatherData] = useState(null)
+  const [isFavourite, setIsFavourite] = useState(false)
   const [favouriteCities, setFavouriteCities] = useState(() => {
-    const stored = localStorage.getItem("favouriteCity");
-    return stored ? JSON.parse(stored) : [];
-  });
-  const { theme } = useTheme();
-  const navigate = useNavigate();
+    const stored = localStorage.getItem('favouriteCity')
+    return stored ? JSON.parse(stored) : []
+  })
+  const { theme } = useTheme()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    setIsFavourite(favouriteCities.includes(cityName));
-  }, [cityName, favouriteCities]);
+    setIsFavourite(favouriteCities.includes(cityName))
+  }, [cityName, favouriteCities])
 
   useEffect(() => {
-    fetchLatLon(cityName).then((res) => setWeatherData(res));
-  }, [cityName]);
+    fetchLatLon(cityName).then((res) => setWeatherData(res))
+  }, [cityName])
 
   const handleClickFavourite = () => {
     const updatedList = isFavourite
       ? favouriteCities.filter((favCity) => favCity !== cityName)
-      : [...favouriteCities, cityName];
+      : [...favouriteCities, cityName]
 
-    setFavouriteCities(updatedList);
-    setIsFavourite(!isFavourite);
-    localStorage.setItem("favouriteCity", JSON.stringify(updatedList));
-  };
+    setFavouriteCities(updatedList)
+    setIsFavourite(!isFavourite)
+    localStorage.setItem('favouriteCity', JSON.stringify(updatedList))
+  }
 
-  if (!weatherData?.current) return <div>Loading...</div>;
+  if (!weatherData?.current) return <div>Loading...</div>
 
-  const weatherCode = weatherData.daily?.weathercode?.[0];
-  const WeatherIcon = getWeatherIcon(weatherCode);
+  const weatherCode = weatherData.daily?.weathercode?.[0]
+  const WeatherIcon = getWeatherIcon(weatherCode)
 
   return (
     <div className="weather-container">
       <div className="nav-buttons">
-        <button className="nav-button home-button" onClick={() => navigate("/")}>
-          <IoHome color={theme === "dark" ? "#fff" : "#000"} />
+        <button
+          className="nav-button home-button"
+          onClick={() => navigate('/')}
+        >
+          <IoHome color={theme === 'dark' ? '#fff' : '#000'} />
         </button>
-        <button className="nav-button fav-button" onClick={() => navigate("/favorites")}>
+        <button
+          className="nav-button fav-button"
+          onClick={() => navigate('/favorites')}
+        >
           <MdOutlineStar color="gold" />
         </button>
       </div>
@@ -90,24 +96,24 @@ function CityDetails({ cityName }) {
           <h3>7-day Forecast</h3>
           <div className="forecast-list">
             {weatherData.daily.time.map((day, index) => {
-              const Icon = getWeatherIcon(weatherData.daily.weathercode[index]);
+              const Icon = getWeatherIcon(weatherData.daily.weathercode[index])
               return (
                 <div className="forecast-day" key={index}>
                   <p className="forecast-date">
                     {new Date(day).toLocaleDateString(undefined, {
-                      weekday: "short",
-                      day: "numeric",
+                      weekday: 'short',
+                      day: 'numeric',
                     })}
                   </p>
                   <div className="forecast-icon">
                     <Icon size={36} />
                   </div>
                   <p className="forecast-temp">
-                    {weatherData.daily.temperature_2m_max[index]}° /{" "}
+                    {weatherData.daily.temperature_2m_max[index]}° /
                     {weatherData.daily.temperature_2m_min[index]}°
                   </p>
                 </div>
-              );
+              )
             })}
           </div>
         </div>
@@ -115,7 +121,7 @@ function CityDetails({ cityName }) {
 
       {weatherData?.daily && <TemperatureChart daily={weatherData.daily} />}
     </div>
-  );
+  )
 }
 
-export default CityDetails;
+export default CityDetails

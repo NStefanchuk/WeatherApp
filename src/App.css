@@ -1,10 +1,10 @@
 .app-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: roboto;
-    padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: roboto;
+  padding: 2rem;
 }
 
 .app-container.light {
@@ -27,4 +27,32 @@
   background-color: transparent;
   font-size: 35px;
   display: flex;
+}
+
+.home-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-title {
+  margin-top: 200px;
+  margin-bottom: 15px;
+  font-size: 35px;
+  padding: 10px;
+}
+
+.home-favorites {
+  position: fixed;
+  right: 70px;
+  top: 10px;
+  color: gold;
+  font-size: 40px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
