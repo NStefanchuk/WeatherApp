@@ -16,7 +16,7 @@ function Home() {
       <h1
         style={{
           marginTop: '200px',
-          marginBottom: '75px',
+          marginBottom: '15px',
           fontSize: '35px',
           padding: '10px',
         }}
