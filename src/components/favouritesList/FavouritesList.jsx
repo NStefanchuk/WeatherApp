@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchLatLon } from '../../utils/API';
+import { fetchLatLonWeather } from '../../utils/API';
 import { getWeatherIcon } from '../../utils/weatherIcons';
 import { useNavigate } from 'react-router-dom';
 import './favouritesList.css';
@@ -19,7 +19,7 @@ const FavouritesList = () => {
     const getCitiesData = async () => {
       setLoading(true);
       try {
-        const promises = favouritesCities.map(city => fetchLatLon(city));
+        const promises = favouritesCities.map(city => fetchLatLonWeather(city));
         const results = await Promise.all(promises);
         setFavouriteCitiesData(results.filter(Boolean));
       } catch (error) {

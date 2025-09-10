@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchLatLon } from '../../utils/API'
+import { fetchLatLonWeather } from '../../utils/API'
 import { getWeatherIcon } from '../../utils/weatherIcons'
 import { FaRegStar, FaStar } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
@@ -24,7 +24,7 @@ function CityDetails({ cityName }) {
   }, [cityName, favouriteCities])
 
   useEffect(() => {
-    fetchLatLon(cityName).then((res) => setWeatherData(res))
+    fetchLatLonWeather(cityName).then((res) => setWeatherData(res))
   }, [cityName])
 
   const handleClickFavourite = () => {

@@ -1,4 +1,4 @@
-const fetchLatLon = async (city = 'Amsterdam') => {
+const fetchLatLonWeather = async (city = 'Amsterdam') => {
   try {
     const geoRes = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`
@@ -37,4 +37,4 @@ const getCitySuggestions = async (query) => {
   }
 }
 
-export { fetchLatLon, getCitySuggestions }
+export { fetchLatLonWeather, getCitySuggestions }

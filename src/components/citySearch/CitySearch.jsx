@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchLatLon, getCitySuggestions } from "../../utils/API";
+import { fetchLatLonWeather, getCitySuggestions } from "../../utils/API";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { getWeatherIcon } from "../../utils/weatherIcons";
 import { useTheme } from "../../context/ThemeContext"; 
@@ -33,7 +33,7 @@ const CitySearch = () => {
 
   const handleSubmitSearchForm = async (e) => {
     e.preventDefault();
-    const res = await fetchLatLon(city);
+    const res = await fetchLatLonWeather(city);
     setWeatherData(res);
     setSuggestions([]);
   };
