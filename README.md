@@ -1,6 +1,13 @@
-# WeatherApp — Educational React Project
+# WeatherApp
 
 **WeatherApp** is a single-page application that allows users to view current weather conditions in different cities and save them to a favorites list. The project was built as part of a React learning module and showcases modern frontend development practices.
+
+## Tech Stack
+
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=fff&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=000&style=for-the-badge)
+![REST API](https://img.shields.io/badge/-REST%20API-0052CC?style=for-the-badge)
 
 ## Live Demo
 
@@ -14,12 +21,7 @@ https://weatherapp-huf.netlify.app/
 - Responsive layout for mobile and desktop
 - Fetch weather data from an external API
 
-## Tech Stack
 
-![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
-![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=fff&style=for-the-badge)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=000&style=for-the-badge)
-![REST API](https://img.shields.io/badge/-REST%20API-0052CC?style=for-the-badge)
 
 ## What I Practiced
 
